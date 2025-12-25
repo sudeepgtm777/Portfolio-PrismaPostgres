@@ -45,11 +45,14 @@ export default async function Home() {
       <section className='py-16 px-4 max-w-3xl mx-auto'>
         <h2 className='text-2xl font-bold mb-4'>Recent Post</h2>
         {posts.length > 0 ? (
-          <div>
+          <div className='flex flex-col gap-4'>
             {posts.map((post) => (
               <Card key={post.id} className='hover:bg-accent transition-colors'>
                 <Link href={`/blog/${post.slug}`} className='block p-4'>
                   <h3 className='text-lg font-semibold'>{post.title}</h3>
+                  <p className='text-sm text-muted-foreground'>
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
                 </Link>
               </Card>
             ))}

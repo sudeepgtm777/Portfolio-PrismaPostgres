@@ -1,37 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio with Prisma & PostgreSQL
+
+A modern portfolio website built with Next.js, featuring a blog system and comment functionality powered by Prisma ORM and PostgreSQL.
+
+## Screenshots
+
+### Home Page
+
+![Home Page](./public/img/HomePage.png)
+
+### Blog Page
+
+![Blog Page](./public/img/BlogPage.png)
+
+### Comments Page
+
+![Comments Page](./public/img/CommentsPage.png)
+
+## Features
+
+- **Personal Portfolio**: Showcase your skills and experience
+- **Blog System**: Create and manage blog posts with markdown support
+- **Comment System**: GitHub OAuth authentication for user comments
+- **Responsive Design**: Built with Tailwind CSS and Radix UI components
+- **Database**: PostgreSQL with Prisma ORM for type-safe database operations
+
+## Tech Stack
+
+- **Framework**: Next.js 16 with App Router
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: Better Auth with GitHub OAuth
+- **Styling**: Tailwind CSS v4
+- **UI Components**: Radix UI primitives
+- **Markdown**: React Markdown with GitHub Flavored Markdown
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+
+```bash
+git clone <your-repo-url>
+cd portfolio
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Set up environment variables**
+   Create a `.env` file with:
+
+```env
+DATABASE_URL="postgresql://username:password@localhost:5432/portfolio"
+BETTER_AUTH_SECRET="your-secret-key"
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+```
+
+4. **Set up the database**
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+5. **Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+├── app/                 # Next.js app directory
+│   ├── api/            # API routes
+│   ├── blog/           # Blog pages
+│   └── comments/       # Comments page
+├── components/         # Reusable UI components
+├── lib/               # Utilities and database config
+├── prisma/            # Database schema and migrations
+└── public/            # Static assets
+```
 
-## Learn More
+## Database Schema
 
-To learn more about Next.js, take a look at the following resources:
+- **User**: GitHub OAuth user data
+- **BlogPost**: Blog posts with slug-based routing
+- **Comment**: User comments with relations
+- **Session/Account**: Authentication data
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy on Vercel with PostgreSQL database:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Portfolio-PrismaPostgres
+1. Connect your GitHub repository to Vercel
+2. Add environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
